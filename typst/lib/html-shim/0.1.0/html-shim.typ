@@ -19,6 +19,54 @@
   }
 }
 
+#let random_ele = (..args) => context {
+  let eles = args.pos()
+  if target() == "html" {
+    html.elem(
+      "span",
+      attrs: (class: "random-ele"),
+      {
+        for e in eles {
+          html.elem(
+            "span",
+            attrs: (class: "random-ele-option", style: "display: none;"),
+            e,
+          )
+        }
+        html.elem(
+          "script",
+          attrs: (type: "text/javascript"),
+          "const options = document.querySelectorAll('.random-ele-option');if (options.length > 0) { const choice = options[Math.floor(Math.random() * options.length)]; choice.style.display = 'inline'; }"
+        )
+      },
+    )
+  }
+}
+
+#let rolling_ele = (..args) => context {
+  let eles = args.pos()
+  if target() == "html" {
+    html.elem(
+      "span",
+      attrs: (class: "rolling-ele"),
+      {
+        for e in eles {
+          html.elem(
+            "span",
+            attrs: (class: "rolling-ele-option", style: "display: none;"),
+            e,
+          )
+        }
+        html.elem(
+          "script",
+          attrs: (type: "text/javascript"),
+          "const options = document.querySelectorAll('.rolling-ele-option');if (options.length > 0) { const storedIndex = localStorage.getItem('rolling-ele-index'); let index = storedIndex ? parseInt(storedIndex) : -1; index = (index + 1) % options.length; options.forEach((el, i) => { el.style.display = i === index ? 'inline' : 'none'; }); localStorage.setItem('rolling-ele-index', index); }"
+        )
+      },
+    )
+  }
+}
+
 #let dinkus = context {
   if target() == "html" {
     html.elem("hr")

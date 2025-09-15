@@ -2,7 +2,7 @@
 
 #show: html-shim.with(
   title: "seatbelt deno for macOS",
-  date: datetime(day: 7, month: 2, year: 2025)
+  date: datetime(day: 7, month: 2, year: 2025),
 )
 
 #show heading.where(level: 1): it => {
@@ -24,11 +24,11 @@ Example seatbelt configuration:
 (version 1)
 ; deny everything by default
 (deny default)
- 
+
 (debug deny)
- 
+
 (import "bsd.sb")
- 
+
 (allow file-read*
   ; allow reading files in Downloads folder
   (subpath "/Users/divy/Downloads")
@@ -57,8 +57,8 @@ Here's an example with FFI:
 
 ```c
 // sample FFI dylib
- 
-static void __attribute__((constructor)) 
+
+static void __attribute__((constructor))
 initialize(void)
 {
   fopen("/etc/passwd", "r"); // blocked by sh-deno

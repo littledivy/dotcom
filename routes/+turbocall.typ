@@ -2,7 +2,7 @@
 
 #show: html-shim.with(
   title: "Just-in-time compiler for Deno FFI",
-  date: datetime(day: 25, month: 3, year: 2024)
+  date: datetime(day: 25, month: 3, year: 2024),
 )
 
 #show heading.where(level: 1): it => {
@@ -50,7 +50,7 @@ V8 can call our native binding directly from the optimized JIT code if we provid
 
 ```cpp
 int FastAdd(int a, int b);
- 
+
 // Extracts type information from the function signature
 v8::CFunction fast_add = MakeV8CFunction(FastAdd);
 ```
@@ -91,11 +91,11 @@ Turbocall generates the following bindings:
 
 ```asm
 .arch aarch64
- 
+
 ldr x0, [x1, #8] ; buffer->data
 mov x1, x2       ; a
 mov x2, x3       ; b
- 
+
 moxz x8, 0
 br x8            ; tailcall
 ```

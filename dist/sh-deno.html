@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta charset="utf-8"><title>seatbelt deno for macOS</title><meta name="og:title" content="seatbelt deno for macOS"><meta name="og:site_name" content="Divy’s Website"><meta name="description" content="Divy’s personal website."><meta name="og:description" content="Divy’s personal website."><meta name="twitter:description" content="Divy’s personal website."><meta name="author" content="Divy Srivastava"><meta name="og:type" content="website"><meta name="og:image" content="/static/logo/button.png"><meta name="twitter:site" content="@undefined_void"><meta name="twitter:creator" content="@undefined_void"><meta name="twitter:title" content="seatbelt deno for macOS"><meta name="twitter:image" content="/static/logo/button.png"><meta name="robots" content="index, follow"><link rel="preload" as="font" href="/fonts/valkyrie_ot_a_regular.woff2" crossorigin><link rel="preload" as="font" href="/fonts/valkyrie_ot_a_italic.woff2" crossorigin><style>
+<!DOCTYPE html><html lang="en"><head><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta charset="utf-8"><title>seatbelt deno for macOS</title><meta name="og:title" content="seatbelt deno for macOS"><meta name="og:site_name" content="littledivy.com"><meta name="description" content="Divy’s personal website."><meta name="og:description" content="Divy’s personal website."><meta name="twitter:description" content="Divy’s personal website."><meta name="author" content="Divy Srivastava"><meta name="og:type" content="website"><meta name="og:image" content="/static/logo/button.png"><meta name="twitter:site" content="@undefined_void"><meta name="twitter:creator" content="@undefined_void"><meta name="twitter:title" content="seatbelt deno for macOS"><meta name="twitter:image" content="/static/logo/button.png"><meta name="robots" content="index, follow"><link rel="preload" as="font" href="/fonts/valkyrie_ot_a_regular.woff2" crossorigin><link rel="preload" as="font" href="/fonts/valkyrie_ot_a_italic.woff2" crossorigin><style>
 @font-face {
   font-family: "Moranga";
   font-style: normal;
@@ -92,11 +92,11 @@
 (version 1)
 ; deny everything by default
 (deny default)
- 
+
 (debug deny)
- 
+
 (import "bsd.sb")
- 
+
 (allow file-read*
   ; allow reading files in Downloads folder
   (subpath "/Users/divy/Downloads")
@@ -110,8 +110,8 @@
     <p>Deno's permission system by default doesn't protect against unauthorized access in native code like FFI libraries, child processes, etc. This is where seatbelt shines as it can restrict access to system calls and other low-level resources that Deno can't.</p>
     <p>Here's an example with FFI:</p>
     <pre><code class="language-c">// sample FFI dylib
- 
-static void __attribute__((constructor)) 
+
+static void __attribute__((constructor))
 initialize(void)
 {
   fopen("/etc/passwd", "r"); // blocked by sh-deno

@@ -389,15 +389,17 @@ impl World {
     &self,
     doc: &mut TypstDoc,
   ) -> Result<String, WorldError> {
+    let path = doc
+      .artifact_path
+      .take()
+      .expect("there should be a document here");
     let mut file = std::fs::File::open(
-      doc
-        .artifact_path
-        .take()
-        .expect("there should be a document here")
-        .as_os_str(),
+        path.as_os_str(),
     )
-    .expect(
-      "Something has gone wrong opening the contents of a compiled document.",
+    .expect(&format!(
+      "Something has gone wrong opening the contents of a compiled document. The path was {:?}",
+      path
+    )
     );
 
     let mut contents = String::new();

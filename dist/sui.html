@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta charset="utf-8"><title>Inject RO data into existing executables</title><meta name="og:title" content="Inject RO data into existing executables"><meta name="og:site_name" content="Divy’s Website"><meta name="description" content="Divy’s personal website."><meta name="og:description" content="Divy’s personal website."><meta name="twitter:description" content="Divy’s personal website."><meta name="author" content="Divy Srivastava"><meta name="og:type" content="website"><meta name="og:image" content="/static/logo/button.png"><meta name="twitter:site" content="@undefined_void"><meta name="twitter:creator" content="@undefined_void"><meta name="twitter:title" content="Inject RO data into existing executables"><meta name="twitter:image" content="/static/logo/button.png"><meta name="robots" content="index, follow"><link rel="preload" as="font" href="/fonts/valkyrie_ot_a_regular.woff2" crossorigin><link rel="preload" as="font" href="/fonts/valkyrie_ot_a_italic.woff2" crossorigin><style>
+<!DOCTYPE html><html lang="en"><head><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta charset="utf-8"><title>Inject RO data into existing executables</title><meta name="og:title" content="Inject RO data into existing executables"><meta name="og:site_name" content="littledivy.com"><meta name="description" content="Divy’s personal website."><meta name="og:description" content="Divy’s personal website."><meta name="twitter:description" content="Divy’s personal website."><meta name="author" content="Divy Srivastava"><meta name="og:type" content="website"><meta name="og:image" content="/static/logo/button.png"><meta name="twitter:site" content="@undefined_void"><meta name="twitter:creator" content="@undefined_void"><meta name="twitter:title" content="Inject RO data into existing executables"><meta name="twitter:image" content="/static/logo/button.png"><meta name="robots" content="index, follow"><link rel="preload" as="font" href="/fonts/valkyrie_ot_a_regular.woff2" crossorigin><link rel="preload" as="font" href="/fonts/valkyrie_ot_a_italic.woff2" crossorigin><style>
 @font-face {
   font-family: "Moranga";
   font-style: normal;
@@ -93,7 +93,7 @@
     <h2>Run-time</h2>
     <p>Find and extract the embedded data from the executable:</p>
     <pre><code class="language-rust">use libsui::find_section;
- 
+
 if let Some(data) = find_section("mydata") {
 	// found
 }</code></pre>
@@ -101,26 +101,26 @@ if let Some(data) = find_section("mydata") {
     <h2>Injecting</h2>
     <p>Build and sign a new Mach-O executable:</p>
     <pre><code class="language-rust">use sui::Macho;
- 
+
 Macho::from(input)? // load an existing executable
 	.write_section("mydata", data)? // write a new section with auxiliary data
 	.build_and_sign(output)?; // build and sign the executable</code></pre>
     <p>Build a new Portable Executable:</p>
     <pre><code class="language-rust">use sui::PortableExecutable;
- 
+
 PortableExecutable::from(input)? // load an existing executable
 	.write_resource("mydata", data)? // inject a new resource (RCDATA) with auxiliary data
 	.build(output)?; // build and sign the executable
 </code></pre>
     <p>Build a new ELF executable:</p>
     <pre><code class="language-rust">use sui::Elf;
- 
+
 Elf::from(input)? // load an existing executable
 	.append("mydata", data)? // tag and append auxiliary data
 	.build(output)?; // build</code></pre>
     <p>Build a new PE with icon:</p>
     <pre><code class="language-rust">use sui::PortableExecutable;
- 
+
 PortableExecutable::from(input)? // load an existing executable
 	.write_resource("mydata", data)? // inject a new resource (RCDATA) with auxiliary data
 	.write_icon("icon.ico")? // inject an icon resource (RT_ICON)
@@ -128,7 +128,7 @@ PortableExecutable::from(input)? // load an existing executable
 </code></pre>
     <p>Ad-hoc codesign a modified arm64 Mach-O executable:</p>
     <pre><code class="language-rust">use sui::apple_codesign::MachoSigner;
- 
+
 MachoSigner::new(input)? // load an existing executable
 	.sign(output)?; // sign the executable with ad-hoc signature
 </code></pre>

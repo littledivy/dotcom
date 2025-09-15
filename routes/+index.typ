@@ -2,11 +2,24 @@
 
 #show: html-shim
 
-#webimg(
-  "/static/img/cube.jpg",
-  "rotterdam cube houses",
-  extraImgClass: "max-h-[200px] w-full object-cover h-[200px]",
+#rolling_ele(
+  webimg(
+    "/static/img/cube.jpg",
+    "rotterdam cube houses",
+    extraImgClass: "max-h-[200px] w-full object-cover h-[200px]",
+  ),
+  webimg(
+    "/static/img/udaipur.jpg",
+    "udaipur island palace",
+    extraImgClass: "max-h-[200px] w-full object-cover h-[200px]",
+  ),
+  webimg(
+    "/static/img/rotterdam.jpg",
+    "rotterdam architecture",
+    extraImgClass: "max-h-[200px] w-full object-cover h-[200px]",
+  ),
 )
+
 // #html.elem(
 //  "div",
 //  attrs: (

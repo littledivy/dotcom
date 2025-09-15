@@ -2,7 +2,7 @@
 
 #show: html-shim.with(
   title: "resym: Remote stack symbolication",
-  date: datetime(day: 16, month: 2, year: 2025)
+  date: datetime(day: 16, month: 2, year: 2025),
 )
 
 #show heading.where(level: 1): it => {

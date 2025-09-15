@@ -23,7 +23,7 @@ build-release:
 
 fmt:
 	cargo fmt
-	deno fmt main.ts
+	deno fmt --ignore=dist/ main.ts
 	typstyle -i routes/
 
 sync-typst-package:

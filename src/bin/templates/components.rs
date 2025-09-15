@@ -121,9 +121,7 @@ impl Renderable for Head {
   fn render_to(&self, output: &mut Buffer) {
     let description = match &self.description {
       Some(desc) => desc,
-      None => {
-        "Divy’s personal website."
-      }
+      None => "Divy’s personal website.",
     };
     let image = match &self.thumbnail {
       Some(image) => image,
@@ -141,7 +139,7 @@ impl Renderable for Head {
 
                 title { (&page_title) }
                 meta name="og:title" content=(&page_title);
-                meta name="og:site_name" content="Divy’s Website";
+                meta name="og:site_name" content="littledivy.com";
 
                 meta name="description" content=(description);
 

@@ -1,2 +1,3 @@
-routes/**/*.typ linguist-documentation
+src/**/*.rs linguist-vendored
 public/styles/*.css linguist-generated
+dist/ linguist-generated

@@ -126,6 +126,10 @@ pub fn run() {
         }
       };
 
+      if !args.watch {
+        return;
+      }
+
       for ev in rx {
         match ev {
           Ok(event) => {

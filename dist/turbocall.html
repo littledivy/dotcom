@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta charset="utf-8"><title>Just-in-time compiler for Deno FFI</title><meta name="og:title" content="Just-in-time compiler for Deno FFI"><meta name="og:site_name" content="Divy’s Website"><meta name="description" content="Divy’s personal website."><meta name="og:description" content="Divy’s personal website."><meta name="twitter:description" content="Divy’s personal website."><meta name="author" content="Divy Srivastava"><meta name="og:type" content="website"><meta name="og:image" content="/static/logo/button.png"><meta name="twitter:site" content="@undefined_void"><meta name="twitter:creator" content="@undefined_void"><meta name="twitter:title" content="Just-in-time compiler for Deno FFI"><meta name="twitter:image" content="/static/logo/button.png"><meta name="robots" content="index, follow"><link rel="preload" as="font" href="/fonts/valkyrie_ot_a_regular.woff2" crossorigin><link rel="preload" as="font" href="/fonts/valkyrie_ot_a_italic.woff2" crossorigin><style>
+<!DOCTYPE html><html lang="en"><head><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta charset="utf-8"><title>Just-in-time compiler for Deno FFI</title><meta name="og:title" content="Just-in-time compiler for Deno FFI"><meta name="og:site_name" content="littledivy.com"><meta name="description" content="Divy’s personal website."><meta name="og:description" content="Divy’s personal website."><meta name="twitter:description" content="Divy’s personal website."><meta name="author" content="Divy Srivastava"><meta name="og:type" content="website"><meta name="og:image" content="/static/logo/button.png"><meta name="twitter:site" content="@undefined_void"><meta name="twitter:creator" content="@undefined_void"><meta name="twitter:title" content="Just-in-time compiler for Deno FFI"><meta name="twitter:image" content="/static/logo/button.png"><meta name="robots" content="index, follow"><link rel="preload" as="font" href="/fonts/valkyrie_ot_a_regular.woff2" crossorigin><link rel="preload" as="font" href="/fonts/valkyrie_ot_a_italic.woff2" crossorigin><style>
 @font-face {
   font-family: "Moranga";
   font-style: normal;
@@ -112,7 +112,7 @@
     <p>V8 Fast calls are a relatively new optimization in V8.</p>
     <p>V8 can call our native binding directly from the optimized JIT code if we provide it with the necessary type information. The necessary typechecks happen in the compiler itself including fallback to the slow path.</p>
     <pre><code class="language-cpp">int FastAdd(int a, int b);
- 
+
 // Extracts type information from the function signature
 v8::CFunction fast_add = MakeV8CFunction(FastAdd);</code></pre>
     <p>This results in massive speedups for repetitve native calls from optimized JavaScript. The calls are inlined and theoretically as fast as calling a native function.</p>
@@ -136,11 +136,11 @@ v8::CFunction fast_add = MakeV8CFunction(FastAdd);</code></pre>
 });</code></pre>
     <p>Turbocall generates the following bindings:</p>
     <pre><code class="language-asm">.arch aarch64
- 
+
 ldr x0, [x1, #8] ; buffer->data
 mov x1, x2       ; a
 mov x2, x3       ; b
- 
+
 moxz x8, 0
 br x8            ; tailcall</code></pre>
     <p>This is simply ARM64 assembly for something like this in C:</p>

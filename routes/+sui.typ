@@ -2,7 +2,7 @@
 
 #show: html-shim.with(
   title: "Inject RO data into existing executables",
-  date: datetime(day: 17, month: 8, year: 2024)
+  date: datetime(day: 17, month: 8, year: 2024),
 )
 
 = Description
@@ -28,7 +28,7 @@ Find and extract the embedded data from the executable:
 
 ```rust
 use libsui::find_section;
- 
+
 if let Some(data) = find_section("mydata") {
 	// found
 }
@@ -42,7 +42,7 @@ Build and sign a new Mach-O executable:
 
 ```rust
 use sui::Macho;
- 
+
 Macho::from(input)? // load an existing executable
 	.write_section("mydata", data)? // write a new section with auxiliary data
 	.build_and_sign(output)?; // build and sign the executable
@@ -52,7 +52,7 @@ Build a new Portable Executable:
 
 ```rust
 use sui::PortableExecutable;
- 
+
 PortableExecutable::from(input)? // load an existing executable
 	.write_resource("mydata", data)? // inject a new resource (RCDATA) with auxiliary data
 	.build(output)?; // build and sign the executable
@@ -63,7 +63,7 @@ Build a new ELF executable:
 
 ```rust
 use sui::Elf;
- 
+
 Elf::from(input)? // load an existing executable
 	.append("mydata", data)? // tag and append auxiliary data
 	.build(output)?; // build
@@ -73,7 +73,7 @@ Build a new PE with icon:
 
 ```rust
 use sui::PortableExecutable;
- 
+
 PortableExecutable::from(input)? // load an existing executable
 	.write_resource("mydata", data)? // inject a new resource (RCDATA) with auxiliary data
 	.write_icon("icon.ico")? // inject an icon resource (RT_ICON)
@@ -85,7 +85,7 @@ Ad-hoc codesign a modified arm64 Mach-O executable:
 
 ```rust
 use sui::apple_codesign::MachoSigner;
- 
+
 MachoSigner::new(input)? // load an existing executable
 	.sign(output)?; // sign the executable with ad-hoc signature
 
