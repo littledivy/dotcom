@@ -3,10 +3,7 @@ use epilogue::{templating::Template, world::Metadata};
 use hypertext::prelude::*;
 use time::format_description;
 
-use super::{
-  components::{Giscus, Head},
-  default_shell::DefaultShell,
-};
+use super::{components::Head, default_shell::DefaultShell};
 
 pub struct Prose;
 

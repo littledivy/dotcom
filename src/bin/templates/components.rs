@@ -191,27 +191,3 @@ impl Renderable for Head {
         .render_to(output);
   }
 }
-
-pub struct Giscus;
-impl Renderable for Giscus {
-  fn render_to(&self, output: &mut Buffer) {
-    maud! {
-        script src="https://giscus.app/client.js"
-            data-repo="youwen5/web"
-            data-repo-id="R_kgDOOc2JBQ"
-            data-category="Announcements"
-            data-category-id="DIC_kwDOOc2JBc4Cp8xj"
-            data-mapping="pathname"
-            data-strict="1"
-            data-reactions-enabled="1"
-            data-emit-metadata="0"
-            data-input-position="top"
-            data-theme="https://web.youwen.dev/styles/giscus.css"
-            data-lang="en"
-            data-loading="lazy"
-            crossorigin="anonymous"
-            async {}
-    }
-    .render_to(output);
-  }
-}
